@@ -63,17 +63,59 @@ def tomorrow(message):
         num_of_week = 1
     else:
         num_of_week = 2
-    today_date = datetime.datetime.today()
+    today_date = datetime.datetime.today().date()
     tomorrow_date = today_date + datetime.timedelta(days=1)
-    photo = open(f"photos/Розклад/{num_of_week} тиждень/{tomorrow_date.strftime('%A')}.jpg", 'rb')
-    # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
-    bot.send_photo(message.chat.id, photo)
+    today_date_of_week = today_date.strftime('%A')
+    tomorrow_date_of_week = tomorrow_date.strftime('%A')
+    photo = None
+
+    if tomorrow_date_of_week == "Saturday":
+        if tomorrow_date == datetime.datetime(year=2022, month=8, day=27).date():
+            photo = open(f"photos/Розклад/2 тиждень/Thursday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=9, day=3).date():
+            photo = open(f"photos/Розклад/2 тиждень/Friday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=9, day=10).date():
+            photo = open(f"photos/Розклад/1 тиждень/Monday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=9, day=17).date():
+            photo = open(f"photos/Розклад/1 тиждень/Tuesday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=9, day=24).date():
+            photo = open(f"photos/Розклад/1 тиждень/Wednesday.jpg" 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=10, day=1).date():
+            photo = open(f"photos/Розклад/1 тиждень/Thursday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=10, day=8).date():
+            photo = open(f"photos/Розклад/1 тиждень/Friday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=10, day=15).date():
+            photo = open(f"photos/Розклад/2 тиждень/Monday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=10, day=22).date():
+            photo = open(f"photos/Розклад/2 тиждень/Tuesday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=10, day=29).date():
+            photo = open(f"photos/Розклад/2 тиждень/Wednesday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=11, day=5).date():
+            photo = open(f"photos/Розклад/2 тиждень/Thursday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif tomorrow_date == datetime.datetime(year=2022, month=11, day=12).date():
+            photo = open(f"photos/Розклад/2 тиждень/Friday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+    else:
+        photo = open(f"photos/Розклад/{num_of_week} тиждень/{tomorrow_date_of_week}.jpg", 'rb')
+        # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
+        bot.send_photo(message.chat.id, photo)
 
 
 @bot.message_handler(commands=['today'])
 def tomorrow(message):
-    datetime_now = datetime.datetime.now()
-    datetime_september = datetime.datetime(year=2022, month=9, day=1)
+    datetime_now = datetime.datetime.now().date()
+    datetime_september = datetime.datetime(year=2022, month=9, day=1).date()
     result = datetime_now - datetime_september
     count_number_of_week = (result.days / 7) % 2
     num_of_week = None
@@ -81,11 +123,52 @@ def tomorrow(message):
         num_of_week = 1
     else:
         num_of_week = 2
-    today_date = datetime.datetime.today()
 
-    photo = open(f"photos/Розклад/{num_of_week} тиждень/{today_date.strftime('%A')}.jpg", 'rb')
-    #               photos/Розклад/2 тиждень/Mondey.jpg
-    bot.send_photo(message.chat.id, photo)
+    today_date = datetime.datetime.today().date()
+    today_date_of_week = today_date.strftime('%A')
+    photo = None
+
+    if today_date_of_week == "Saturday":
+        if today_date == datetime.datetime(year=2022, month=8, day=27).date():
+            photo = open(f"photos/Розклад/2 тиждень/Thursday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=9, day=3).date():
+            photo = open(f"photos/Розклад/2 тиждень/Friday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=9, day=10).date():
+            photo = open(f"photos/Розклад/1 тиждень/Monday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=9, day=17).date():
+            photo = open(f"photos/Розклад/1 тиждень/Tuesday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=9, day=24).date():
+            photo = open(f"photos/Розклад/1 тиждень/Wednesday.jpg" 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=10, day=1).date():
+            photo = open(f"photos/Розклад/1 тиждень/Thursday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=10, day=8).date():
+            photo = open(f"photos/Розклад/1 тиждень/Friday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=10, day=15).date():
+            photo = open(f"photos/Розклад/2 тиждень/Monday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=10, day=22).date():
+            photo = open(f"photos/Розклад/2 тиждень/Tuesday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=10, day=29).date():
+            photo = open(f"photos/Розклад/2 тиждень/Wednesday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=11, day=5).date():
+            photo = open(f"photos/Розклад/2 тиждень/Thursday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+        elif today_date == datetime.datetime(year=2022, month=11, day=12).date():
+            photo = open(f"photos/Розклад/2 тиждень/Friday.jpg", 'rb')
+            bot.send_photo(message.chat.id, photo)
+    else:
+        photo = open(f"photos/Розклад/{num_of_week} тиждень/{today_date_of_week}.jpg", 'rb')
+        # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
+        bot.send_photo(message.chat.id, photo)
 
 
 @bot.message_handler(commands=['time'])
@@ -109,11 +192,13 @@ def tomorrow(message):
     bot.send_message(message.chat.id, "<b>lo5sife</b>", parse_mode='html')
     bot.send_message(message.chat.id, "<b>o7xapzp</b>", parse_mode='html')
 
+    bot.send_message(message.chat.id, "Основи штучного інтелекту")
+    bot.send_message(message.chat.id, "<b>jfcwnob</b>", parse_mode='html')
+
     # bot.send_message(message.chat.id, "Основи бізнес-аналізу в програмній інженерії")
     # bot.send_message(message.chat.id, "<b>lo5sife</b>", parse_mode='html')
 
 
-# <a>agb4uzvv</a>
 @bot.message_handler(regexp='[0-9+]')
 def get_number_for_fact(message):
     try:
