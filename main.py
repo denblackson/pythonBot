@@ -24,18 +24,11 @@ def start(message):
 @bot.message_handler(commands=['help'])
 def get_help(message):
     bot.send_message(message.chat.id,
-                     '/tomorrow    - щоб отримати розклад на завтра\n\n/codes    - щоб отримати коди класів\n\n/week    - щоб отримати номер навчального тижня'
-                     '\n\n/time  - щоб отримати розклад дзвінків\n\n/marks -  шкала оцінювання\n\n/today - розклад на сьогодні'
+                     '/tomorrow    - щоб отримати розклад на завтра(суботи включно)\n\n/codes    - щоб отримати коди класів\n\n/week    - щоб отримати номер навчального тижня'
+                     '\n\n/time  - щоб отримати розклад дзвінків\n\n/marks -  шкала оцінювання\n\n/today - розклад на сьогодні(суботи включно)'
                      ''
                      '\n\nвідправ <u><b>будь-яке</b></u> число, щоб отримати цікавий факт',
                      parse_mode='html')  # -    , parse_mode='html'
-
-
-# region
-# bot.send_message(message.chat.id, '/codes    - щоб отримати коди класів')
-# bot.send_message(message.chat.id, '/week    - щоб отримати номер навчального тижня')
-# bot.send_message(message.chat.id, "відправ <u><b>будь-яке</b></u> число, щоб отримати цікавий факт",parse_mode='html')
-# endregion
 
 
 @bot.message_handler(commands=['week'])
@@ -107,13 +100,17 @@ def tomorrow(message):
             photo = open(f"photos/Розклад/2 тиждень/Friday.jpg", 'rb')
             bot.send_photo(message.chat.id, photo)
     else:
-        photo = open(f"photos/Розклад/{num_of_week} тиждень/{tomorrow_date_of_week}.jpg", 'rb')
-        # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
-        bot.send_photo(message.chat.id, photo)
+        try:
+            photo = open(f"photos/Розклад/{num_of_week} тиждень/{tomorrow_date_of_week}.jpg", 'rb')
+            # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
+            bot.send_photo(message.chat.id, photo)
+        except:
+            bot.send_message(message.chat.id, "Вольою даною мені звергу, знизу, і побокам, завтра ми будем спати")
+
 
 
 @bot.message_handler(commands=['today'])
-def tomorrow(message):
+def today(message):
     datetime_now = datetime.datetime.now().date()
     datetime_september = datetime.datetime(year=2022, month=9, day=1).date()
     result = datetime_now - datetime_september
@@ -166,9 +163,14 @@ def tomorrow(message):
             photo = open(f"photos/Розклад/2 тиждень/Friday.jpg", 'rb')
             bot.send_photo(message.chat.id, photo)
     else:
-        photo = open(f"photos/Розклад/{num_of_week} тиждень/{today_date_of_week}.jpg", 'rb')
-        # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
-        bot.send_photo(message.chat.id, photo)
+        try:
+            photo = open(f"photos/Розклад/{num_of_week} тиждень/{today_date_of_week}.jpg", 'rb')
+            # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
+            bot.send_photo(message.chat.id, photo)
+        except:
+            bot.send_message(message.chat.id, "Сьогодні йдем на шашлики")
+            video = open(f"photos/Sunday.mp4", 'rb')
+            bot.send_video(message.chat.id, video)
 
 
 @bot.message_handler(commands=['time'])
