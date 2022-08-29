@@ -18,7 +18,7 @@ print(d1.strftime('%A %d'))
 print('<------------------------------------------>')
 #region
 datetime_now = datetime.datetime.now()
-datetime_september = datetime.datetime(year=2022, month=9, day=1)
+datetime_september = datetime.datetime(year=2022, month=1, day=1)
 result = datetime_now - datetime_september
 count_number_of_week= (result.days / 7) % 2
 print(f"count_week {count_number_of_week}")
@@ -34,6 +34,6 @@ print('<------------------------------------------>\n\n')
 #photo = open("photos/Розклад/2 тиждень/П'ятниця.jpg", 'rb')
 
  # 2 неділя
-photo = open(f"photos/Розклад/{int(count_number_of_week)+1} тиждень/П'ятниця.jpg", 'rb')
+photo = open(f"photos/Розклад/{int(count_number_of_week)} тиждень/П'ятниця.jpg", 'rb')
 print(photo)
 #endregion

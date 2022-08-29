@@ -3,6 +3,8 @@ import requests
 import json
 import datetime
 from googletrans import Translator
+import count_week
+
 
 #   TOKENS
 # region
@@ -33,29 +35,11 @@ def get_help(message):
 
 @bot.message_handler(commands=['week'])
 def week(message):
-    datetime_now = datetime.datetime.now()
-    datetime_september = datetime.datetime(year=2022, month=9, day=1)
-    result = datetime_now - datetime_september
-    count_number_of_week = (result.days / 7) % 2
-    num_of_week = None
-    if count_number_of_week == 0:
-        num_of_week = 1
-    else:
-        num_of_week = 2
-    bot.send_message(message.chat.id, f'Зараз тиждень номер <b>{num_of_week}</b>', parse_mode='html')
+    bot.send_message(message.chat.id, f'Зараз тиждень номер <b>{count_week.get_num_of_week()}</b>', parse_mode='html')
 
 
 @bot.message_handler(commands=['tomorrow'])
 def tomorrow(message):
-    datetime_now = datetime.datetime.now()
-    datetime_september = datetime.datetime(year=2022, month=9, day=1)
-    result = datetime_now - datetime_september
-    count_number_of_week = (result.days / 7) % 2
-    num_of_week = None
-    if count_number_of_week == 0:
-        num_of_week = 1
-    else:
-        num_of_week = 2
     today_date = datetime.datetime.today().date()
     tomorrow_date = today_date + datetime.timedelta(days=1)
     today_date_of_week = today_date.strftime('%A')
@@ -101,26 +85,15 @@ def tomorrow(message):
             bot.send_photo(message.chat.id, photo)
     else:
         try:
-            photo = open(f"photos/Розклад/{num_of_week} тиждень/{tomorrow_date_of_week}.jpg", 'rb')
+            photo = open(f"photos/Розклад/{count_week.get_num_of_week()} тиждень/{tomorrow_date_of_week}.jpg", 'rb')
             # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
             bot.send_photo(message.chat.id, photo)
         except:
             bot.send_message(message.chat.id, "Вольою даною мені звергу, знизу, і побокам, завтра ми будем спати")
 
 
-
 @bot.message_handler(commands=['today'])
 def today(message):
-    datetime_now = datetime.datetime.now().date()
-    datetime_september = datetime.datetime(year=2022, month=9, day=1).date()
-    result = datetime_now - datetime_september
-    count_number_of_week = (result.days / 7) % 2
-    num_of_week = None
-    if count_number_of_week == 0:
-        num_of_week = 1
-    else:
-        num_of_week = 2
-
     today_date = datetime.datetime.today().date()
     today_date_of_week = today_date.strftime('%A')
     photo = None
@@ -164,7 +137,7 @@ def today(message):
             bot.send_photo(message.chat.id, photo)
     else:
         try:
-            photo = open(f"photos/Розклад/{num_of_week} тиждень/{today_date_of_week}.jpg", 'rb')
+            photo = open(f"photos/Розклад/{count_week.get_num_of_week()} тиждень/{today_date_of_week}.jpg", 'rb')
             # print(f"photos/Розклад/{num_of_week} тиждень/П'ятниця.jpg")
             bot.send_photo(message.chat.id, photo)
         except:
@@ -184,7 +157,6 @@ def marks(message):
     photo = open('photos/шкала оцінок.jpg', 'rb')
     bot.send_photo(message.chat.id, photo)
 
-
 @bot.message_handler(commands=['codes'])
 def tomorrow(message):
     bot.send_message(message.chat.id, "Програмне забезпечення інформаційних систем")
@@ -197,8 +169,13 @@ def tomorrow(message):
     bot.send_message(message.chat.id, "Основи штучного інтелекту")
     bot.send_message(message.chat.id, "<b>jfcwnob</b>", parse_mode='html')
 
+    bot.send_message(message.chat.id, "Аналіз вимог до програмного забезпечення")
+    bot.send_message(message.chat.id, "<b>qcupmfk</b>", parse_mode='html')
+
+
     # bot.send_message(message.chat.id, "Основи бізнес-аналізу в програмній інженерії")
     # bot.send_message(message.chat.id, "<b>lo5sife</b>", parse_mode='html')
+
 
 
 @bot.message_handler(regexp='[0-9+]')
