@@ -22,12 +22,12 @@ def get_help(message):
 
 
 @bot.message_handler(commands=['week'])
-def week(message):
+def get_week_num(message):
     bot.send_message(message.chat.id, f'Зараз тиждень номер <b>{count_week.get_num_of_week()}</b>', parse_mode='html')
 
 
 @bot.message_handler(commands=['tomorrow'])
-def tomorrow(message):
+def get_schedule_on_tomorrow(message):
     today_date = datetime.datetime.today().date()
     tomorrow_date = today_date + datetime.timedelta(days=1)
     today_date_of_week = today_date.strftime('%A')
@@ -45,7 +45,7 @@ def tomorrow(message):
 
 
 @bot.message_handler(commands=['today'])
-def today(message):
+def get_schedule_on_today(message):
     today_date = datetime.datetime.today().date()
     today_date_of_week = today_date.strftime('%A')
     photo = None
@@ -63,38 +63,40 @@ def today(message):
 
 
 @bot.message_handler(commands=['time'])
-def time(message):
+def get_time_schedule(message):
     photo = open('photos/time.jpg', 'rb')
     bot.send_photo(message.chat.id, photo)
 
 
 @bot.message_handler(commands=['marks'])
-def marks(message):
+def get_marks_criterion(message):
     photo = open('photos/шкала оцінок.jpg', 'rb')
     bot.send_photo(message.chat.id, photo)
 
 
 @bot.message_handler(commands=['codes'])
-def tomorrow(message):
-    bot.send_message(message.chat.id, "Програмне забезпечення інформаційних систем")
-    bot.send_message(message.chat.id, "<b>gb4uzvv</b>", parse_mode='html')
+def get_codes(message):
+    bot.send_message(message.chat.id, CONSTS.codes, parse_mode='html')
 
-    bot.send_message(message.chat.id, "Основи бізнес-аналізу в програмній інженерії")
-    bot.send_message(message.chat.id, "<b>lo5sife</b>", parse_mode='html')
-    bot.send_message(message.chat.id, "<b>o7xapzp</b>", parse_mode='html')
 
-    bot.send_message(message.chat.id, "Основи штучного інтелекту")
-    bot.send_message(message.chat.id, "<b>jfcwnob</b>", parse_mode='html')
-
-    bot.send_message(message.chat.id, "Аналіз вимог до програмного забезпечення")
-    bot.send_message(message.chat.id, "<b>qcupmfk</b>", parse_mode='html')
-
-    # bot.send_message(message.chat.id, "Основи бізнес-аналізу в програмній інженерії")
-    # bot.send_message(message.chat.id, "<b>lo5sife</b>", parse_mode='html')
+# region
+# bot.send_message(message.chat.id, "Програмне забезпечення інформаційних систем")
+# bot.send_message(message.chat.id, "<b>gb4uzvv</b>", parse_mode='html')
+#
+# bot.send_message(message.chat.id, "Основи бізнес-аналізу в програмній інженерії")
+# bot.send_message(message.chat.id, "<b>lo5sife</b>", parse_mode='html')
+# bot.send_message(message.chat.id, "<b>o7xapzp</b>", parse_mode='html')
+#
+# bot.send_message(message.chat.id, "Основи штучного інтелекту")
+# bot.send_message(message.chat.id, "<b>jfcwnob</b>", parse_mode='html')
+#
+# bot.send_message(message.chat.id, "Аналіз вимог до програмного забезпечення")
+# bot.send_message(message.chat.id, "<b>qcupmfk</b>", parse_mode='html')
+# endregion
 
 
 @bot.message_handler(regexp='[0-9+]')
-def get_number_for_fact(message):
+def get_interesting_fact(message):
     try:
         answer = requests.get(f'http://numbersapi.com/{message.text}?json')
         eng_text = json.loads(answer.text)['text']
