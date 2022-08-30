@@ -4,8 +4,7 @@ import json
 import datetime
 from googletrans import Translator
 import CONSTS
-import count_week
-import saturday
+from func import count_week, saturday
 
 bot = telebot.TeleBot(CONSTS.ANTONIO_TOKEN)
 print("bot is launched")
@@ -59,19 +58,19 @@ def get_schedule_on_today(message):
             bot.send_photo(message.chat.id, photo)
         except:
             bot.send_message(message.chat.id, "Сьогодні йдем на шашлики")
-            video = open(f"photos/Sunday.mp4", 'rb')
+            video = open(f"../photos/Sunday.mp4", 'rb')
             bot.send_video(message.chat.id, video)
 
 
 @bot.message_handler(commands=['time'])
 def get_time_schedule(message):
-    photo = open('photos/time.jpg', 'rb')
+    photo = open('../photos/time.jpg', 'rb')
     bot.send_photo(message.chat.id, photo)
 
 
 @bot.message_handler(commands=['marks'])
 def get_marks_criterion(message):
-    photo = open('photos/шкала оцінок.jpg', 'rb')
+    photo = open('../photos/шкала оцінок.jpg', 'rb')
     bot.send_photo(message.chat.id, photo)
 
 
