@@ -18,6 +18,6 @@ TEST_BOT_TOKEN = "5769706294:AAHMx-hYxE2tv5A8UbuwnkeOePUva2dE5mE"
 #region
 codes = "Програмне забезпечення інформаційних систем\n<b>gb4uzvv</b>\n\nОснови бізнес-аналізу в програмній інженерії\n" \
         "<b>lo5sife</b>\n<b>o7xapzp</b>\n\nОснови штучного інтелекту\n<b>jfcwnob</b>\n\nАналіз вимог до програмного забезпечення" \
-        "\n<b>qcupmfk</b>"
+        "\n<b>qcupmfk</b>\n\nГрупова динаміка і комунікації\n<b>vaffct6</b>\n<b>dsihzia</b>"
 #endregion
 

@@ -7,13 +7,14 @@ import CONSTS
 import count_week
 import saturday
 
-bot = telebot.TeleBot(CONSTS.ANTONIO_TOKEN)
+bot = telebot.TeleBot(CONSTS.TEST_BOT_TOKEN)
 print("bot is launched")
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
     start_message = f'Hello, <b>{message.from_user.first_name} <u>{message.from_user.last_name}</u></b>\nВас вітає бот Дениса @denblackson'
+    bot.send_message(message.chat.id, start_message, parse_mode='html')
 
 
 @bot.message_handler(commands=['help'])
