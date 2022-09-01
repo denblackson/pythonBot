@@ -7,7 +7,7 @@ import CONSTS
 import count_week
 import saturday
 
-bot = telebot.TeleBot(CONSTS.TEST_BOT_TOKEN)
+bot = telebot.TeleBot(CONSTS.ANTONIO_TOKEN)
 print("bot is launched")
 
 
