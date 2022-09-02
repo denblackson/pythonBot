@@ -1,0 +1,11 @@
+venv\Scripts\activate
+pip freeze > requirements.txt
+
+
+
+heroku login
+git status
+git add .
+git commit -am ""
+git status
+git push heroku master
