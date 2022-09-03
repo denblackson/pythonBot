@@ -158,21 +158,6 @@ def get_codes(message):
         pass
 
 
-# region
-# bot.send_message(message.chat.id, "Програмне забезпечення інформаційних систем")
-# bot.send_message(message.chat.id, "<b>gb4uzvv</b>", parse_mode='html')
-#
-# bot.send_message(message.chat.id, "Основи бізнес-аналізу в програмній інженерії")
-# bot.send_message(message.chat.id, "<b>lo5sife</b>", parse_mode='html')
-# bot.send_message(message.chat.id, "<b>o7xapzp</b>", parse_mode='html')
-#
-# bot.send_message(message.chat.id, "Основи штучного інтелекту")
-# bot.send_message(message.chat.id, "<b>jfcwnob</b>", parse_mode='html')
-#
-# bot.send_message(message.chat.id, "Аналіз вимог до програмного забезпечення")
-# bot.send_message(message.chat.id, "<b>qcupmfk</b>", parse_mode='html')
-# endregion
-
 
 # @bot.message_handler(regexp='[0-9+]')
 # def get_interesting_fact(message):
