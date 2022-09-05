@@ -10,6 +10,5 @@ def get_num_of_week():
         week = "2"
     else:
         week = "1"
-    print(week)
     return week
 
