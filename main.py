@@ -12,6 +12,9 @@ import del_mess
 bot = telebot.TeleBot(CONSTS.ANTONIO_TOKEN)
 print("bot is launched")
 
+today_date = datetime.datetime.today().date()
+tomorrow_date = today_date + datetime.timedelta(days=1)
+
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -38,7 +41,8 @@ def get_help(message):
 
 @bot.message_handler(commands=['week'])
 def get_week_num(message):
-    bot.send_message(message.chat.id, f'Зараз тиждень номер <b>{count_week.get_num_of_week()}</b>', parse_mode='html')
+    bot.send_message(message.chat.id, f'Зараз тиждень номер <b>{count_week.get_num_of_week(today_date)}</b>',
+                     parse_mode='html')
     del_mess.thread_sleep(5)
     try:
         bot.delete_message(message.chat.id, int(message.message_id))
@@ -49,11 +53,10 @@ def get_week_num(message):
 
 @bot.message_handler(commands=['tomorrow'])
 def get_schedule_on_tomorrow(message):
-    today_date = datetime.datetime.today().date()
-    tomorrow_date = today_date + datetime.timedelta(days=1)
     tomorrow_date_of_week = tomorrow_date.strftime('%A')
     photo = None
     if tomorrow_date_of_week == "Saturday":
+        print(tomorrow_date_of_week)
         bot.send_photo(message.chat.id, saturday.if_tomorrow_is_saturday())
         del_mess.thread_sleep(30)
         try:
@@ -64,7 +67,8 @@ def get_schedule_on_tomorrow(message):
 
     else:
         try:
-            photo = open(f"photos/Розклад/{count_week.get_num_of_week()} тиждень/{tomorrow_date_of_week}.jpg", 'rb')
+            photo = open(
+                f"photos/Розклад/{count_week.get_num_of_week(tomorrow_date)} тиждень/{tomorrow_date_of_week}.jpg", 'rb')
             bot.send_photo(message.chat.id, photo)
             photo.close()
             del_mess.thread_sleep(30)
@@ -86,7 +90,6 @@ def get_schedule_on_tomorrow(message):
 
 @bot.message_handler(commands=['today'])
 def get_schedule_on_today(message):
-    today_date = datetime.datetime.today().date()
     today_date_of_week = today_date.strftime('%A')
     if today_date_of_week == "Saturday":
         bot.send_photo(message.chat.id, saturday.if_today_is_saturday())
@@ -98,7 +101,8 @@ def get_schedule_on_today(message):
             pass
     else:
         try:
-            photo = open(f"photos/Розклад/{count_week.get_num_of_week()} тиждень/{today_date_of_week}.jpg", 'rb')
+            photo = open(f"photos/Розклад/{count_week.get_num_of_week(today_date)} тиждень/{today_date_of_week}.jpg",
+                         'rb')
             bot.send_photo(message.chat.id, photo)
             del_mess.thread_sleep(30)
             photo.close()
@@ -156,7 +160,6 @@ def get_codes(message):
         bot.delete_message(message.chat.id, int(message.message_id) + 1)
     except:
         pass
-
 
 
 # @bot.message_handler(regexp='[0-9+]')
