@@ -1,6 +1,7 @@
 import datetime
 
 
+
 def get_num_of_week(date):
     #datetime_september = datetime.datetime(year=2022, month=8, day=22)
     num_of_week_in_year = date.isocalendar().week
