@@ -14,24 +14,39 @@ TEST_BOT_TOKEN = "5769706294:AAHMx-hYxE2tv5A8UbuwnkeOePUva2dE5mE"
 
 
 # CODES
-#region
+# region
 codes = "Програмне забезпечення інформаційних систем\n" \
+        "" \
         "<b>gb4uzvv</b>\n" \
         "1 підгрупа\n" \
         "<b>vfougvh</b>\n\n" \
+        "" \
+        "" \
         "Основи бізнес-аналізу в програмній інженерії\n" \
+        "" \
         "<b>lo5sife</b>\n" \
         "<b>o7xapzp</b>\n\n" \
+        "" \
+        "" \
         "Основи штучного інтелекту\n" \
+        "" \
         "<b>jfcwnob</b>\n\n" \
+        "" \
+        "" \
         "Аналіз вимог до програмного забезпечення" \
+        "" \
         "\n<b>qcupmfk</b>\n" \
         "<b>dsihzia</b>\n\n" \
+        "" \
+        "" \
         "Групова динаміка і комунікації\n" \
+        "" \
         "<b>vaffct6</b>\n" \
-        "<b>xsl65x4</b>\n" \
+        "<b>xsl65x4</b>\n\n" \
+        "" \
+        "" \
         "Бази данних\n" \
+        "<b>nsnidy2</b>" \
         "2 підгрупа\n" \
         "<b>2rceknh</b>"
-#endregion
-
+# endregion
